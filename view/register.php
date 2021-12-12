@@ -6,7 +6,7 @@ include('../model/db.php');
 <head>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<form action="" method = "post">
+<form action="../control/registerValidation.php" method = "post">
   <div>
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>

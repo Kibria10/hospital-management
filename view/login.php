@@ -7,7 +7,7 @@ include('../model/db.php');
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<form action="" method="post">
+<form action="../control/loginValidation.php" method="post">
 
 <h2>Login For Patients</h2>
 
