@@ -4,9 +4,9 @@ header('location:../view/login.php');
 $conn = mysqli_connect("localhost", "root", "");
 
 if($conn){
-    echo "Connection success";
+    echo "Connection Successful";
 }else{
-    echo " NoConnection";
+    echo "No Connection";
 }
 mysqli_select_db($conn,'hospitalmanagement');
 
@@ -41,7 +41,8 @@ $sql= "INSERT INTO patientdata (pname, email, password, phoneno, address, gender
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
-  } else {
+  } 
+  else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
   
