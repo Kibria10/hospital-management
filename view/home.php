@@ -9,7 +9,7 @@
   
   <div>
     <p>Login As a Doctor.<p>
-    <a href = "loginDoc.php" > Go to Login Page </a>
+    <a href = "doctor.php" > Go to Login Page </a>
   </div>
 
   
@@ -21,5 +21,5 @@
   
   <div>
     <p>Login As a Admin.<p>
-    <a href = "loginAdmin.php"> Go to Login Page </a>
+    <a href = "admin.php"> Go to Login Page </a>
   </div>

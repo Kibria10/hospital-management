@@ -21,11 +21,11 @@ $num = mysqli_num_rows($result);
 
 if($num == 1){
  $_SESSION['email'] = $email;
-   header('location:home.php');
+   header('location:../view/patient.php');
 
 }
 else{
-    header('location:register.php');
+    header('location:../view/register.php');
 }
 
 ?>
