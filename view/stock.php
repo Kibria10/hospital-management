@@ -1,5 +1,5 @@
 <?php
-include('../control/insertPharma.php')
+include('../controller/insert-pharma.php')
 ?>
 
 <!DOCTYPE html>

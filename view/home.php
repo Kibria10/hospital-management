@@ -9,17 +9,17 @@
   
   <div>
     <p>Login As a Doctor.<p>
-    <a href = "doctor.php" > Go to Login Page </a>
+    <a href = "login-doc.php" > Go to Login Page </a>
   </div>
 
   
   <div>
     <p>Login As a Pharmacist.<p>
-    <a href = "loginPhar.php" > Go to Login Page </a>
+    <a href = "login-phar.php" > Go to Login Page </a>
   </div>
 
   
   <div>
     <p>Login As a Admin.<p>
-    <a href = "admin.php"> Go to Login Page </a>
+    <a href = "login-admin.php"> Go to Login Page </a>
   </div>

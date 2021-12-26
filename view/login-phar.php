@@ -1,5 +1,5 @@
 <?php
-include('../control/login-controller.php');
+include('../controller/login-controller.php');
 
 if(isset($_SESSION['email'])){
 header("location: pharmacy.php");

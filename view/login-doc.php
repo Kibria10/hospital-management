@@ -1,5 +1,5 @@
 <?php
-include('../controller/patient-login-controller.php');
+include('../controller/admin-controller.php');
 
 if(isset($_SESSION['email'])){
     header("location: patient-records.php");
@@ -20,7 +20,7 @@ if(isset($_SESSION['email'])){
 
 <form action="" method="post">
 
-    <h2>Login For Patients</h2>
+    <h2>Login For Doctor</h2>
 
     <div class="container">
         <label for="email">Email</label>
@@ -31,11 +31,7 @@ if(isset($_SESSION['email'])){
         <!-- <input name="submit" type="submit" value="LOGIN"> -->
         <button type="submit" input name="submit" type="submit" value="LOGIN">Login</button>
     </div>
-    <div>
-        <p>If you don't have an account yet, please sign up to create an account first.<p>
-            <a href = "register.php" class="button"> Sign Up </a>
-    </div>
-
+    <a href="../controller/logout.php" class="button">Log Out</a>
 </form>
 <br>
 <?php echo $error;?>

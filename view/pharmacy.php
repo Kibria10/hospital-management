@@ -1,6 +1,25 @@
 <?php
-include('../model/db.php')
+include('../model/db.php');
+
+session_start();
+
+if(!isset($_SESSION['email'])){
+echo 'Welcome Guest.';
+} else {
+$sex = $_SESSION['email'];
+$sql = "SELECT * FROM pharmacistdata WHERE email = '$sex'";
+    $connection = new db();
+        $conobj = $connection->OpenCon();
+
+
+    $result = mysqli_query($conobj, $sql);
+    while($row = mysqli_fetch_array($result)) {
+        echo "". "Welcome," . $row["pharname"].  "<br>";
+    }
+
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -10,13 +29,13 @@ include('../model/db.php')
 <body>
 
 <h1>HealthCare Pharma</h1>
-<p style="color:blue;">Welcome to the pharmacist view</p>
+<p style="color:blue;">Welcome to the pharmacist view </p>
 <h3 style="color:red;">Stocks</h3>
 
 
 <div>
 
-<?php $insert ?>
+    <?php $insert ?>
     <?php $error ?>
 
     <?php
@@ -58,8 +77,6 @@ include('../model/db.php')
 
 <br> </br>
 
-<!-- search bar  -->
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -99,7 +116,7 @@ $(document).ready(function(){
 <br> </br>
 <br> </br>
 
-<a href="../control/logout.php" class="button">Log Out</a>
+<a href="../controller/logout.php" class="button">Log Out</a>
 
   </body>
 </html>
