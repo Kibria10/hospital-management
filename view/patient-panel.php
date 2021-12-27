@@ -8,8 +8,6 @@ $name = $temp[1];
 echo "" . "Welcome," . $name . "<br>";
 include('./appointment-modal.php');
 ?>
-
-
 </h5>
 
 <head>
@@ -31,17 +29,16 @@ include('./appointment-modal.php');
             <div class="card-body">
     <center>
         <b>Doctor Records</b>
-
     </center>
     <BR>
     <?php
     $connection = new db();
     $conobj=$connection->OpenCon();
-    $userQuery=$connection->viewAll($conobj,"doctordata");
+    $userQuery=$connection->ShowAll($conobj,"doctordata");
     if ($userQuery->num_rows > 0) {
     echo "<table border='1'>
         <tr>
-        <th> S.No </th>
+        <th>S.No</th>
         <th>Doctor Name</th>
         <th>Email </th>
         <th>Phone Number</th>
@@ -59,7 +56,7 @@ include('./appointment-modal.php');
             echo "<td>" . $row['phoneno'] . "</td>";
             echo "<td>" . $row['speciality'] . "</td>";
             $doctor_id = $row['id'];//id of the doctor
-            echo "<td> <a data-toggle='modal' class='open-exampleModalLong' href='#exampleModalLong' data-id='$doctor_id'> Click me</a> </td>";
+            echo "<td> <a data-toggle='modal' class='open-appointmentModal' href='#appointmentModal' data-id='$doctor_id'> Click me</a> </td>";
 //            echo "<td> <button type='button' class='btn btn-info btn-lg' data-toggle='modal' class='open-exampleModalLong' data-target='#exampleModalLong'  data-id='5666' </button>Appointment</td>";
             echo "</tr>";
         }
@@ -113,8 +110,8 @@ include('./appointment-modal.php');
 <!--//script for passing the doctor-id to the appointment-modal in the hidden input form-->
 <!--this will be executed everytime the appointment button is being pushed -->
 <script>
-    $('body').on('click', '.open-exampleModalLong', function() {
+    $('body').on('click', '.open-appointmentModal', function() {
         var mydoctor_id = $(this).data('id');
-        $("#exampleModalLong #doctor_id").val( mydoctor_id );
+        $("#appointmentModal #doctor_id").val( mydoctor_id );
      });
 </script>

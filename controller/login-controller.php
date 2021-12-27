@@ -1,55 +1,48 @@
 <?php
 include('../model/db.php');
-session_start(); 
+session_start();
 
- $error="";
+$error="";
 
 if (isset($_POST['submit'])) {
-if (empty($_POST['email']) || empty($_POST['password'])) {
-$error = "Email does not exist or Password is invalid";
-}
-else
-{
-$email=$_POST['email'];
-$password=$_POST['password'];
+    if (empty($_POST['email']) || empty($_POST['password'])) {
+        $error = "Email does not exist or Password is invalid";
+    } else {
+        $email = $_POST['email'];
+        echo $email;
+        $password = $_POST['password'];
+        $role = $_POST['role'];
+        echo $role;
+        $connection = new db();
+        $conobj = $connection->OpenCon();
+        if ($role == "doctor")
+        {
+            $userQuery = $connection->loginChecker($conobj, "doctordata", $email, $password);
+        }
+        elseif ($role == "patient")
+        {
+            $userQuery = $connection->loginChecker($conobj, "patientdata", $email, $password);
+        }
+        elseif ($role == "pharmacist")
+        {
+            $userQuery = $connection->loginChecker($conobj, "pharmacistdata", $email, $password);
+        }
+        elseif ($role == "admin")
+        {
+            $userQuery = $connection->loginChecker($conobj, "admindata", $email, $password);
+        }
+        else{
+            echo "role not found";
+        }
 
-$connection = new db();
-$conobj=$connection->OpenCon();
+        if ($userQuery->num_rows > 0) {
 
-$userQuery=$connection->CheckUser($conobj,"pharmacistdata",$email,$password);
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['password'] = $_POST['password'];
+        } else {
+            $error = "Email does not exist or Password is invalid";
+        }
+        $connection->CloseCon($conobj);
 
-if ($userQuery->num_rows > 0) {
- 
-  $_SESSION['email']=$_POST['email'];
-  $_SESSION['password']=$_POST['password'];
-   }
- else {
-$error = "Email does not exist or Password is invalid";
-}
-$connection->CloseCon($conobj);
-
-}
-/*if (isset($_POST['submit'])){
-    $connection = new db();
-    $conobj=$connection->OpenCon();
-    $userQuery=$connection->ShowAll($conobj,'doctordata');
-
-    echo "<table><tr><th>Doctor ID</th><th> Doctor Name</th><th>Email</th><th>Age</th><th>Phone Number</th><th>Speciality</th></tr>";
-
-    while($row = $userQuery->fetch_assoc()) {
-
-      echo "<tr><td>".$row["id"]."</td><td>".$row["dname"]."</td><td>".$row["email"]."</td><td>".$row["age"]."</td><td>".$row["phoneno"]."</td><td>".$row["speciality"]."</td></tr>";
     }
-    echo "</table>";
-  } else {
-    echo "0 results";
-  }*/
-
 }
-
-
-
-
-
-
-?>
